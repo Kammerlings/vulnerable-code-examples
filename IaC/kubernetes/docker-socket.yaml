@@ -14,11 +14,5 @@ spec:
   containers:
   - image: k8s.gcr.io/test-webserver
     name: test-container
-    volumeMounts:
-    - mountPath: /var/run/docker.sock
-      name: test-volume
-  volumes:
-  - name: test-volume
-    hostPath:
-      path: /var/run/docker.sock # Sensitive
-      type: Socket
+    securityContext:
+      allowPrivilegeEscalation: false
